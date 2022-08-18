@@ -2,10 +2,6 @@
     AWS Credentials 제공자
     AWS CLI 설정에서 설정한 Profile 명을 사용하여 작성 함. (~/.aws/credentials or ~/.aws/config)
 */
-provider "aws" {
-    profile = "Profile Name"
-    region = "ap-northeast-2"
-}
  
 /*
     조직 설정 활성화 및 조직에서 사용할 기능에 대한 엑세스 정의
@@ -126,17 +122,17 @@ resource "aws_organizations_policy_attachment" "BaseOUs" {
 }
  
 resource "aws_organizations_policy_attachment" "ServiceOUs" {
-    policy_id = aws_organizations_policy.ServicesOUSCP.id
+    policy_id = aws_organizations_policy.ServiceOUsSCP.id
     target_id = aws_organizations_organizational_unit.ServiceOU.id
 }
  
 resource "aws_organizations_policy_attachment" "AServiceOU" {
-    policy_id = aws_organizations_policy.ServicesOUSCP.id
+    policy_id = aws_organizations_policy.ServiceOUsSCP.id
     target_id = aws_organizations_organizational_unit.AServiceOU.id
 }
  
 resource "aws_organizations_policy_attachment" "BServiceOU" {
-    policy_id = aws_organizations_policy.ServicesOUSCP.id
+    policy_id = aws_organizations_policy.ServiceOUsSCP.id
     target_id = aws_organizations_organizational_unit.BServiceOU.id
 }
  
